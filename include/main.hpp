@@ -1,3 +1,3 @@
 /* 
- * Main Header File - Ticket Parking Simulator OOPAssg2
+ * main.hpp - Main Header File - Ticket Parking Simulator OOPAssg2
  */

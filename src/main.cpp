@@ -1,5 +1,5 @@
 /*
- * main.cc - Main source file for Ticket Parking Simulator OOPAssg2
+ * main.cpp - Main source file for Ticket Parking Simulator OOPAssg2
  */
 
 #include <iostream>
