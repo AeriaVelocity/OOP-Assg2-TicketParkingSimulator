@@ -9,13 +9,31 @@
 
 #include <iostream>
 #include <string>
-#include "classes.h"
 
+#include "classes.h"
+#include "interactive.h"
+#include "strings.h"
+
+/* 
+ * Come on now.
+ */
 int main()
 {
-    std::cout << "Parking Ticket Simulator" << std::endl;
-    std::cout << "An exercise in humility by Arsalan Kazmi" << std::endl;
-    std::cout << "----------------------------------------" << std::endl;
+    std::cout << Strings::welcomeMessage() << std::endl
+              << Strings::horizontalRule(40) << std::endl;
+
+    std::string userName = Interactive::getUserName();
+    std::string badgeNumber = Interactive::getBadgeNumber();
+
+    std::cout << Strings::horizontalRule(30) << std::endl;
+
+    std::cout << "Name: " << userName << std::endl;
+    std::cout << "Badge Number: " << badgeNumber << std::endl;
+
+    return EXIT_SUCCESS;
+
+    /* The following is sample code to show how to use the classes */
+    /* The return statement above renders this code inaccessible */
 
     ParkedCar myCar;
 
