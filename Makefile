@@ -1,5 +1,5 @@
-CXX = g++
-CXXFLAGS = -std=c++11 -Wall -Wextra
+CXX = clang++
+CXXFLAGS = -std=c++17 -Wall -Wextra
 
 BIN_DIR = bin
 BUILD_DIR = build

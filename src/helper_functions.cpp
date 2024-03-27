@@ -24,7 +24,7 @@ std::string Interactive::getBadgeNumber() {
     std::cout << "Enter your badge number: ";
     std::getline(std::cin, badgeNumber);
     try {
-        std::stoi(badgeNumber);
+        (void) std::stoi(badgeNumber);
     }
     catch (std::invalid_argument &e) {
         std::cerr << "Please enter a valid badge number." << std::endl;
