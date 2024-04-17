@@ -10,16 +10,17 @@
 #include <iostream>
 #include "classes.h"
 
-PatrolOfficer::PatrolOfficer() {
-    name = "";
-    badgeNumber = "";
-}
+PatrolOfficer::PatrolOfficer() {}
 
+/// @brief Prints relevant information of the patrol officer.
 void PatrolOfficer::printRelevantInfo() {
     std::cout << "Name: " << name << std::endl;
     std::cout << "Badge Number: " << badgeNumber << std::endl;
 }
 
+/// @brief Sets officer information.
+/// @param name The officer's name.
+/// @param badgeNumber The officer's badge number.
 void PatrolOfficer::setPatrolOfficerInfo(std::string &name, std::string &badgeNumber) {
     this->name = name;
     this->badgeNumber = badgeNumber;

@@ -11,13 +11,9 @@
 #include <string>
 #include "classes.h"
 
-ParkedCar::ParkedCar() {
-    carMake = "";
-    carModel = "";
-    carColour = "";
-    licenceNumber = "";
-}
+ParkedCar::ParkedCar() {}
 
+/// @brief Prints relevant information of the parked car.
 void ParkedCar::printRelevantInfo() {
     std::cout << "Car Make: " << carMake << std::endl;
     std::cout << "Car Model: " << carModel << std::endl;
@@ -25,6 +21,11 @@ void ParkedCar::printRelevantInfo() {
     std::cout << "Licence Number: " << licenceNumber << std::endl;
 }
 
+/// @brief Sets car information.
+/// @param carMake The make, i.e. company name of the car.
+/// @param carModel The model of the car.
+/// @param carColour The car's colour.
+/// @param licenceNumber The car's licence number.
 void ParkedCar::setCarInfo(std::string &carMake, std::string &carModel, std::string &carColour, std::string &licenceNumber) {
     this->carMake = carMake;
     this->carModel = carModel;

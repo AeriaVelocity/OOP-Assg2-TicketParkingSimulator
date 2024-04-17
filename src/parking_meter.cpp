@@ -10,22 +10,24 @@
 #include <iostream>
 #include "classes.h"
 
-ParkingMeter::ParkingMeter()
-{
-    purchasedDurationMins = 0;
-    elapsedDurationMins = 0;
-}
+ParkingMeter::ParkingMeter() {}
 
+/// @brief Prints relevant information of the parking meter.
 void ParkingMeter::printRelevantInfo() {
     std::cout << "Purchased Duration: " << purchasedDurationMins << " minutes" << std::endl;
     std::cout << "Elapsed Duration: " << elapsedDurationMins << " minutes" << std::endl;
     std::cout << "Illegal Parking Duration: " << purchasedDurationMins - elapsedDurationMins << " minutes" << std::endl;
 }
 
+/// @brief Calculates if the vehicle has gone over the duration that was purchased.
+/// @return How many minutes the vehicle has gone over.
 int ParkingMeter::getIllegalParkingDuration() {
     return purchasedDurationMins - elapsedDurationMins;
 }
 
+/// @brief Sets the purchased and elapsed durations, in minutes.
+/// @param purchasedDurationMins How many minutes the driver has paid for.
+/// @param elapsedDurationMins How many minutes the vehicle has been parked for.
 void ParkingMeter::setDurations(int &purchasedDurationMins, int &elapsedDurationMins) {
     this->purchasedDurationMins = purchasedDurationMins;
     this->elapsedDurationMins = elapsedDurationMins;

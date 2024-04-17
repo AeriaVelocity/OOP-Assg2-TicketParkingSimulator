@@ -15,13 +15,9 @@
 #include <windows.h>
 #endif
 
-ParkingTicket::ParkingTicket() {
-    parkedCar = ParkedCar();
-    parkingMeter = ParkingMeter();
-    baseFine = 0.00;
-    additionalFine = 0.00;
-}
+ParkingTicket::ParkingTicket() {}
 
+/// @brief Prints relevant information of the parking ticket.
 void ParkingTicket::printRelevantInfo() {
     #ifdef __WIN32__
     SetConsoleOutputCP(CP_UTF8);
@@ -31,6 +27,11 @@ void ParkingTicket::printRelevantInfo() {
     std::cout << std::fixed << std::setprecision(2) << "Additional Fine: £" << additionalFine << std::endl;
 }
 
+/// @brief Sets ticket information.
+/// @param parkedCar The parked car object.
+/// @param parkingMeter The parking meter object.
+/// @param baseFine How much (in GBP) the ticket will initially charge.
+/// @param additionalFine How much (in GBP) the ticket will add to the base fine.
 void ParkingTicket::setTicketInfo(ParkedCar &parkedCar, ParkingMeter &parkingMeter, double baseFine, double additionalFine) {
     this->parkedCar = parkedCar;
     this->parkingMeter = parkingMeter;

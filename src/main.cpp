@@ -15,91 +15,73 @@
 #include "interactive.h"
 #include "strings.h"
 
-/* 
- * Come on now.
- */
-int main()
+/// @brief Prints the welcome message.
+/// @param userName The user's name.
+void printWelcomeMessage(std::string userName)
 {
     std::cout << Strings::welcomeMessage() << std::endl
               << Strings::horizontalRule(40) << std::endl;
-
-    std::string userName = Interactive::getUserName();
-    std::string badgeNumber = Interactive::getBadgeNumber();
-
-    std::cout << Strings::horizontalRule(30) << std::endl;
-
-    std::cout << Strings::horizontalRule(30) << std::endl;
     std::cout << "Welcome officer " << userName << std::endl;
     std::cout << "The system is ready to use." << std::endl;
-
     std::cout << Strings::horizontalRule(30) << std::endl;
+}
 
+/// @brief Gets car information from the user.
+/// @param carMake The make, i.e. company name of the car.
+/// @param carModel The model of the car.
+/// @param carColour The car's colour.
+/// @param licenceNumber The car's licence number. 
+void getCarInformation(std::string *carMake, std::string *carModel, std::string *carColour, std::string *licenceNumber)
+{
     std::cout << "Please enter car information, separated by spaces." << std::endl;
     std::cout << "[Make] [Model] [Colour] [Licence Number]" << std::endl;
 
-    std::string carMake;
-    std::string carModel;
-    std::string carColour;
-    std::string licenceNumber;
+    std::cin >> *carMake >> *carModel >> *carColour >> *licenceNumber;
+}
 
-    std::cin >> carMake >> carModel >> carColour >> licenceNumber;
-
+/// @brief Gets meter and duration information from the user.
+/// @param pm_parkingMeter The parking meter object.
+/// @param purchasedDurationMins How many minutes have been purchased.
+/// @param elapsedDurationMins How many minutes the car has been parked for.
+void getMeterAndDurationInformation(ParkingMeter *pm_parkingMeter, int *purchasedDurationMins, int *elapsedDurationMins)
+{
     std::cout << "How many minutes of parking were purchased?" << std::endl;
-
-    int purchasedDurationMins;
-
-    std::cin >> purchasedDurationMins;
+    std::cin >> *purchasedDurationMins;
 
     std::cout << "How many minutes has the vehicle been parked?" << std::endl;
+    std::cin >> *elapsedDurationMins;
 
-    int elapsedDurationMins;
+    pm_parkingMeter->setDurations(*purchasedDurationMins, *elapsedDurationMins);
+}
 
-    std::cin >> elapsedDurationMins;
+/// @brief It's the main function.
+/// @return 0 indicating success.
+int main()
+{
+    // Welcome the user and get their info
+    std::string userName = Interactive::getUserName();
+    std::string badgeNumber = Interactive::getBadgeNumber();
 
-    std::cout << Strings::horizontalRule(30) << std::endl;
+    // Print a nice welcome message
+    printWelcomeMessage(userName);
 
-    std::cout << "Police Officer Information:" << std::endl;
-    std::cout << "  Name: " << userName << std::endl;
-    std::cout << "  Badge Number: " << badgeNumber << std::endl;
+    // Get the car information from the user
+    std::string carMake, carModel, carColour, licenceNumber;
+    getCarInformation(&carMake, &carModel, &carColour, &licenceNumber);
 
-    std::cout << "Car Information:" << std::endl;
-    std::cout << "  Make: " << carMake << std::endl;
-    std::cout << "  Model: " << carModel << std::endl;
-    std::cout << "  Colour: " << carColour << std::endl;
-    std::cout << "  Licence Number: " << licenceNumber << std::endl;
-
-    std::cout << "Meter Information:" << std::endl;
-    std::cout << "  Purchased Duration: " << purchasedDurationMins << " minutes" << std::endl;
-    std::cout << "  Elapsed Duration: " << elapsedDurationMins << " minutes" << std::endl;
-
-    double baseFine = 25.0;
-    double additionalFine = 10.0 * (elapsedDurationMins - purchasedDurationMins);
-
-    std::cout << "Ticket Information:" << std::endl;
-    std::cout << "  Minutes In Violation: " << elapsedDurationMins - purchasedDurationMins << " minutes" << std::endl;
-    std::cout << std::fixed << std::setprecision(2) << "  Fine: £" << baseFine + additionalFine << std::endl;
-
-    std::cout << Strings::horizontalRule(30) << std::endl;
-
-    return EXIT_SUCCESS;
-
-    /* The following is sample code to show how to use the classes */
-    /* The return statement above renders this code inaccessible */
-
-    ParkedCar myCar;
-
-    std::string example_carMake = "Toyota";
-    std::string example_carModel = "Camry";
-    std::string example_carColour = "Blue";
-    std::string example_licenceNumber = "ABC123";
-    myCar.setCarInfo(example_carMake, example_carModel, example_carColour, example_licenceNumber);
-
+    // Create the car object and print its info
+    ParkedCar myCar = ParkedCar();
+    myCar.setCarInfo(carMake, carModel, carColour, licenceNumber);
     myCar.printRelevantInfo();
 
+    // Create the parking meter object and get the relevant info from the user
     ParkingMeter pm_parkingMeter;
+    int purchasedDurationMins, elapsedDurationMins;
+    getMeterAndDurationInformation(&pm_parkingMeter, &purchasedDurationMins, &elapsedDurationMins);
 
-    ParkingTicket thePoliceman;
-    thePoliceman.setTicketInfo(myCar, pm_parkingMeter, 100, 50);
+    // Create the ticket object and print its info
+    ParkingTicket thePoliceman = ParkingTicket();
+    thePoliceman.setTicketInfo(myCar, pm_parkingMeter, purchasedDurationMins, elapsedDurationMins);
     thePoliceman.printRelevantInfo();
 
     return 0;
