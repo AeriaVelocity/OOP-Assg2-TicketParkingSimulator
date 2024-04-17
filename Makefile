@@ -6,7 +6,7 @@ BUILD_DIR = build
 INCLUDE_DIR = include
 SRC_DIR = src
 
-EXECUTABLE = $(BIN_DIR)/my_program
+EXECUTABLE = $(BIN_DIR)/parking-ticket-simulator
 SOURCES = $(wildcard $(SRC_DIR)/*.cpp)
 OBJECTS = $(patsubst $(SRC_DIR)/%.cpp,$(BUILD_DIR)/%.o,$(SOURCES))
 DEPENDENCIES = $(OBJECTS:.o=.d)
