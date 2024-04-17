@@ -18,13 +18,19 @@
 ParkingTicket::ParkingTicket() {}
 
 /// @brief Prints relevant information of the parking ticket.
-void ParkingTicket::printRelevantInfo() {
+void ParkingTicket::printRelevantInfo(int indentation) {
     #ifdef __WIN32__
     SetConsoleOutputCP(CP_UTF8);
     #endif
 
-    std::cout << std::fixed << std::setprecision(2) << "Base Fine: £" << baseFine << std::endl;
-    std::cout << std::fixed << std::setprecision(2) << "Additional Fine: £" << additionalFine << std::endl;
+    std::cout << std::string(indentation, ' ') << std::fixed << std::setprecision(2) << "Base Fine: £" << baseFine << std::endl;
+    std::cout << std::string(indentation, ' ') << std::fixed << std::setprecision(2) << "Additional Fine: £" << additionalFine << std::endl;
+}
+
+/// @brief Returns the total fine.
+/// @return The total fine. (Wow, really? I never would have guessed that.)
+int ParkingTicket::getTotalFine() {
+    return baseFine + additionalFine;
 }
 
 /// @brief Sets ticket information.

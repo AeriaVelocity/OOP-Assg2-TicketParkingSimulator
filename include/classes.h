@@ -6,7 +6,7 @@
 class ParkedCar {
     public:
         ParkedCar();
-        void printRelevantInfo();
+        void printRelevantInfo(int indentation);
         void setCarInfo(
             std::string &carMake,
             std::string &carModel,
@@ -23,7 +23,7 @@ class ParkedCar {
 class ParkingMeter {
     public:
         ParkingMeter();
-        void printRelevantInfo();
+        void printRelevantInfo(int indentation);
         int getIllegalParkingDuration();
         void setDurations(
             int &purchasedDurationMins,
@@ -37,7 +37,7 @@ class ParkingMeter {
 class PatrolOfficer {
     public:
         PatrolOfficer();
-        void printRelevantInfo();
+        void printRelevantInfo(int indentation);
         void setPatrolOfficerInfo(
             std::string &name,
             std::string &badgeNumber
@@ -50,7 +50,8 @@ class PatrolOfficer {
 class ParkingTicket {
     public:
         ParkingTicket();
-        void printRelevantInfo();
+        void printRelevantInfo(int indentation);
+        int getTotalFine();
         void setTicketInfo(
             ParkedCar &parkedCar,
             ParkingMeter &parkingMeter,

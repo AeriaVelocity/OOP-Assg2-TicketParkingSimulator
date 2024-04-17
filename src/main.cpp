@@ -54,6 +54,26 @@ void getMeterAndDurationInformation(ParkingMeter *pm_parkingMeter, int *purchase
     pm_parkingMeter->setDurations(*purchasedDurationMins, *elapsedDurationMins);
 }
 
+/// @brief Prints the ticket in a readable format.
+/// @param car 
+/// @param meter 
+/// @param ticket 
+/// @param purchased 
+/// @param elapsed 
+void printTicket(ParkedCar car, ParkingMeter meter, ParkingTicket ticket, int purchased, int elapsed, int indentation)
+{
+    std::cout << Strings::horizontalRule(30) << std::endl;
+    std::cout << "TICKET ISSUED!" << std::endl;
+    std::cout << "Car Information:" << std::endl;
+    car.printRelevantInfo(indentation);
+    std::cout << "Meter Information:" << std::endl;
+    meter.printRelevantInfo(indentation);
+    std::cout << "Ticket Information:" << std::endl;
+    std::cout << std::string(indentation, ' ') << "Minutes In Violation: " << elapsed - purchased << std::endl;
+    std::cout << std::string(indentation, ' ') << "Total Fine: £" << ticket.getTotalFine() << std::endl;
+    std::cout << Strings::horizontalRule(30) << std::endl;
+}
+
 /// @brief It's the main function.
 /// @return 0 indicating success.
 int main()
@@ -72,7 +92,6 @@ int main()
     // Create the car object and print its info
     ParkedCar myCar = ParkedCar();
     myCar.setCarInfo(carMake, carModel, carColour, licenceNumber);
-    myCar.printRelevantInfo();
 
     // Create the parking meter object and get the relevant info from the user
     ParkingMeter pm_parkingMeter;
@@ -82,7 +101,12 @@ int main()
     // Create the ticket object and print its info
     ParkingTicket thePoliceman = ParkingTicket();
     thePoliceman.setTicketInfo(myCar, pm_parkingMeter, purchasedDurationMins, elapsedDurationMins);
-    thePoliceman.printRelevantInfo();
+
+    // Print the ticket
+    printTicket(myCar, pm_parkingMeter, thePoliceman, purchasedDurationMins, elapsedDurationMins, 4);
+
+    // Thank the user
+    std::cout << "Thank you for using the Ticket Parking Simulator!" << std::endl;
 
     return 0;
 }

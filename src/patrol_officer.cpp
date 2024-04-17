@@ -13,9 +13,9 @@
 PatrolOfficer::PatrolOfficer() {}
 
 /// @brief Prints relevant information of the patrol officer.
-void PatrolOfficer::printRelevantInfo() {
-    std::cout << "Name: " << name << std::endl;
-    std::cout << "Badge Number: " << badgeNumber << std::endl;
+void PatrolOfficer::printRelevantInfo(int indentation) {
+    std::cout << std::string(indentation, ' ') << "Name: " << name << std::endl;
+    std::cout << std::string(indentation, ' ') << "Badge Number: " << badgeNumber << std::endl;
 }
 
 /// @brief Sets officer information.

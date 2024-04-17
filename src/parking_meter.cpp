@@ -13,10 +13,10 @@
 ParkingMeter::ParkingMeter() {}
 
 /// @brief Prints relevant information of the parking meter.
-void ParkingMeter::printRelevantInfo() {
-    std::cout << "Purchased Duration: " << purchasedDurationMins << " minutes" << std::endl;
-    std::cout << "Elapsed Duration: " << elapsedDurationMins << " minutes" << std::endl;
-    std::cout << "Illegal Parking Duration: " << purchasedDurationMins - elapsedDurationMins << " minutes" << std::endl;
+void ParkingMeter::printRelevantInfo(int indentation) {
+    std::cout << std::string(indentation, ' ') << "Purchased Duration: " << purchasedDurationMins << " minutes" << std::endl;
+    std::cout << std::string(indentation, ' ') << "Elapsed Duration: " << elapsedDurationMins << " minutes" << std::endl;
+    std::cout << std::string(indentation, ' ') << "Illegal Parking Duration: " << elapsedDurationMins - purchasedDurationMins << " minutes" << std::endl;
 }
 
 /// @brief Calculates if the vehicle has gone over the duration that was purchased.

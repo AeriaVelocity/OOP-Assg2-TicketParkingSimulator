@@ -14,11 +14,11 @@
 ParkedCar::ParkedCar() {}
 
 /// @brief Prints relevant information of the parked car.
-void ParkedCar::printRelevantInfo() {
-    std::cout << "Car Make: " << carMake << std::endl;
-    std::cout << "Car Model: " << carModel << std::endl;
-    std::cout << "Car Colour: " << carColour << std::endl;
-    std::cout << "Licence Number: " << licenceNumber << std::endl;
+void ParkedCar::printRelevantInfo(int indentation) {
+    std::cout << std::string(indentation, ' ') << "Car Make: " << carMake << std::endl;
+    std::cout << std::string(indentation, ' ') << "Car Model: " << carModel << std::endl;
+    std::cout << std::string(indentation, ' ') << "Car Colour: " << carColour << std::endl;
+    std::cout << std::string(indentation, ' ') << "Licence Number: " << licenceNumber << std::endl;
 }
 
 /// @brief Sets car information.
