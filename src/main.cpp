@@ -100,7 +100,7 @@ int main()
 
     // Create the ticket object and print its info
     ParkingTicket thePoliceman = ParkingTicket();
-    thePoliceman.setTicketInfo(myCar, pm_parkingMeter, purchasedDurationMins, elapsedDurationMins);
+    thePoliceman.setTicketInfo(myCar, pm_parkingMeter, 25, 10);
 
     // Print the ticket
     printTicket(myCar, pm_parkingMeter, thePoliceman, purchasedDurationMins, elapsedDurationMins, 4);
